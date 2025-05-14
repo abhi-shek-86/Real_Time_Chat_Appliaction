@@ -106,22 +106,45 @@ function sendMessage() {
 }
 
 // Load Messages
+// Updated loadMessages function for compact bubbles
 function loadMessages() {
   const chatBox = document.getElementById("chat-box");
   chatBox.innerHTML = "";
 
   db.ref("messages").orderByChild("timestamp").on("child_added", snapshot => {
     const msg = snapshot.val();
+    
+    // Create a wrapper div for proper alignment
+    const wrapperElement = document.createElement("div");
+    wrapperElement.className = "message-wrapper";
+    
+    // Create the message element
     const msgElement = document.createElement("div");
-    msgElement.classList.add("chat-message");
+    const currentUser = auth.currentUser;
+
+    // Check if the message was sent by the current user
+    if (currentUser && msg.uid === currentUser.uid) {
+      msgElement.classList.add("chat-message", "sent-message");
+    } else {
+      msgElement.classList.add("chat-message", "received-message");
+    }
 
     // Format the timestamp
     const date = new Date(msg.timestamp);
-    const formattedTime = date.toLocaleString(); // e.g., "5/13/2025, 10:30:00 AM"
+    const formattedTime = date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}); // Shorter time format
 
-    // Display the message with the timestamp
-    msgElement.innerHTML = `<span>${msg.name} <small>${formattedTime}</small></span>${msg.text}`;
-    chatBox.appendChild(msgElement);
+    // Display the message with the sender's name and timestamp
+    msgElement.innerHTML = `
+      <span class="message-meta">${msg.name} · ${formattedTime}</span>
+      <p>${msg.text}</p>
+    `;
+    
+    // Add the message to the wrapper
+    wrapperElement.appendChild(msgElement);
+    
+    // Add the wrapper to the chat box
+    chatBox.appendChild(wrapperElement);
     chatBox.scrollTop = chatBox.scrollHeight;
   });
 }
+
