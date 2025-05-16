@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div class="form-section">
+            <div class="form-header">
+                <h2>LOGIN</h2>
+                <p>Welcome back! Please enter your details</p>
+            </div>
+            <form action="" id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                </div>
+
+                <input type="submit" value="SIGN IN">
+
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="signup.html">Register</a></p>
+                </div>
+            </form>
+        </div>
+        
+        <!-- <div class="image-section">
+            <img src="/api/placeholder/200/200" alt="Security Icon">
+        </div> -->
+    </div>
+    
+    <script src="../js/firebase-config.js" type="module"></script>
+    <script src="../js/app.js" type="module"></script>
+</body>
+
+</html>

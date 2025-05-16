@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Glassy Signup</title>
+  <link rel="stylesheet" href="../css/signup.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</head>
+
+<body>
+
+  <div id="signupform" class="">
+    <div class="form-header">
+      <h2>Create Account</h2>
+      <p>Sign up to get started with our services</p>
+    </div>
+
+    <form id="signUpForm">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Enter your username" />
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email" />
+      </div>
+
+      <div class="input-group">
+        <label for="pass">Password</label>
+        <input type="password" name="pass" id="pass" placeholder="Create a password" />
+      </div>
+
+      <input type="submit" id="signupsubmit" value="Create Account" />
+
+      <div class="form-footer">
+        <p>Already have an account? <a href="./login.html">Log in</a></p>
+      </div>
+    </form>
+  </div>
+  
+  <script src="../js/firebase-config.js" type="module"></script>
+  <script src="../js/app.js" type="module"></script>
+
+</body>
+</html>
